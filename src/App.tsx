@@ -1,59 +1,57 @@
-import { useGetProductsQuery } from "./api/api";
-import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { addMany, addOne, reset } from "./slices/counter";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Alert,
+  Breadcrumb,
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Row,
+} from "react-bootstrap";
 
 export default function App() {
-  const dispatch = useAppDispatch();
-  const count = useAppSelector((state) => state.counter.count);
-
-  const { isLoading, isSuccess, data, isError, error } =
-    useGetProductsQuery(null);
-
-  const content = isLoading ? (
-    <div>Loading... (2 second wait)</div>
-  ) : isSuccess && data ? (
-    <ul>
-      {data.map((p) => (
-        <li key={p.id}>{p.title}</li>
-      ))}
-    </ul>
-  ) : isError && error ? (
-    <div>{error.toString()}</div>
-  ) : null;
-
   return (
     <>
-      <div className="flex flex-col gap-10">
-        <h1 className="text-4xl">React Template</h1>
-        <div>
-          <h2 className="text-2xl">State</h2>
-          <div className="flex gap-4">
-            <div>Count: {count}</div>
-            <button
-              className="bg-gray-500 text-white"
-              onClick={() => dispatch(addOne())}
-            >
-              Add 1
-            </button>
-            <button
-              className="bg-gray-500 text-white"
-              onClick={() => dispatch(addMany(2))}
-            >
-              Add 2
-            </button>
-            <button
-              className="bg-gray-500 text-white"
-              onClick={() => dispatch(reset())}
-            >
-              Reset
-            </button>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-2xl">API</h2>
-          <div>{content}</div>
-        </div>
-      </div>
+      <Container>
+        <Form>
+          <Row>
+            <Col md>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control type="email" placeholder="example@email.com" />
+                <Form.Text className="text-muted">
+                  We'll never share your email address, trust us!
+                </Form.Text>
+              </Form.Group>
+            </Col>
+            <Col md>
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="password" />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Button type="submit" variant="secondary">
+            Login
+          </Button>
+        </Form>
+        <Card className="mb-3" style={{ color: "#000" }}>
+          <Card.Img src="https://picsum.photos/100/50" />
+          <Card.Body>
+            <Card.Title>Card Example</Card.Title>
+            <Card.Text>This is an example of React Bootstrap cards</Card.Text>
+            <Button variant="primary">Read more</Button>
+          </Card.Body>
+        </Card>
+        <Breadcrumb>
+          <Breadcrumb.Item>Test</Breadcrumb.Item>
+          <Breadcrumb.Item>Test2</Breadcrumb.Item>
+          <Breadcrumb.Item active>Test3</Breadcrumb.Item>
+        </Breadcrumb>
+        <Alert variant="success">This is a button</Alert>
+        <Button>Button</Button>
+      </Container>
     </>
   );
 }
