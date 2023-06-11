@@ -37,7 +37,7 @@ export default function App() {
           </Button>
         </Form>
         <Card className="mb-3" style={{ color: "#000" }}>
-          <Card.Img src="https://picsum.photos/100/50" />
+          <Card.Img src="https://picsum.photos/300/200" />
           <Card.Body>
             <Card.Title>Card Example</Card.Title>
             <Card.Text>This is an example of React Bootstrap cards</Card.Text>
