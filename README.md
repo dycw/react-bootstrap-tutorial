@@ -1,6 +1,6 @@
-# `template-react`
+# React Bootstrap Tutorial (Adrian Twarog)
 
-Template for React repositories
+- https://www.youtube.com/watch?v=8pKjULHzs0s
 
 ## Getting started
 
